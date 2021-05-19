@@ -1,0 +1,49 @@
+#服务端口
+server:
+  port: 8081
+  servlet:
+    context-path: /CarInsurance
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-not-delete-value: 0
+      logic-delete-value: -1
+      column-underline: true
+      field-strategy: not_null
+      id-type: auto
+    banner: false
+  type-aliases-package: cn.g7neko.CarInsuranceClaims.model.pojo
+  mapper-locations: classpath:mappers/*.xml
+
+#文件上传
+common:
+  file:
+    upload:
+      root:
+        url: E:\\srv\\CarInsurance\\appendix\\
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-request-size: 100MB
+      max-file-size: 100MB
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    url: "jdbc:mysql://localhost:3306/car_insurance_claims?useUnicode=true&amp;characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull"
+    username: "root"
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    #配置SpringSecurity
+  security:
+
+
+
+

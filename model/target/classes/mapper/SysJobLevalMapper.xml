@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.g7neko.CarInsuranceClaims.mapper.SysJobLevalMapper" >
+  <resultMap id="BaseResultMap" type="cn.g7neko.CarInsuranceClaims.pojo.SysJobLeval" >
+    <id column="jobLevalId" property="joblevalid" jdbcType="BIGINT" />
+    <result column="jobLevalName" property="joblevalname" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    jobLevalId, jobLevalName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_job_leval
+    where jobLevalId = #{joblevalid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_job_leval
+    where jobLevalId = #{joblevalid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysJobLeval" >
+    insert into sys_job_leval (jobLevalId, jobLevalName)
+    values (#{joblevalid,jdbcType=BIGINT}, #{joblevalname,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysJobLeval" >
+    insert into sys_job_leval
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="joblevalid != null" >
+        jobLevalId,
+      </if>
+      <if test="joblevalname != null" >
+        jobLevalName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="joblevalid != null" >
+        #{joblevalid,jdbcType=BIGINT},
+      </if>
+      <if test="joblevalname != null" >
+        #{joblevalname,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysJobLeval" >
+    update sys_job_leval
+    <set >
+      <if test="joblevalname != null" >
+        jobLevalName = #{joblevalname,jdbcType=BIGINT},
+      </if>
+    </set>
+    where jobLevalId = #{joblevalid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysJobLeval" >
+    update sys_job_leval
+    set jobLevalName = #{joblevalname,jdbcType=BIGINT}
+    where jobLevalId = #{joblevalid,jdbcType=BIGINT}
+  </update>
+</mapper>

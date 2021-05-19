@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.g7neko.CarInsuranceClaims.mapper.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.g7neko.CarInsuranceClaims.pojo.SysUser" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="jobNumber" property="jobnumber" jdbcType="VARCHAR" />
+    <result column="departmentId" property="departmentid" jdbcType="INTEGER" />
+    <result column="jobLevalId" property="joblevalid" jdbcType="INTEGER" />
+    <result column="jobId" property="jobid" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="edu" property="edu" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="jobState" property="jobstate" jdbcType="INTEGER" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="mountguardTime" property="mountguardtime" jdbcType="TIMESTAMP" />
+    <result column="bedemobilizedTime" property="bedemobilizedtime" jdbcType="TIMESTAMP" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, name, username, password, jobNumber, departmentId, jobLevalId, jobId, sex, 
+    salt, edu, email, address, jobState, telephone, mountguardTime, bedemobilizedTime, 
+    birthday, Remarks
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysUser" >
+    insert into sys_user (user_id, name, username, 
+      password, jobNumber, departmentId, 
+      jobLevalId, jobId, sex, 
+      salt, edu, email, address, 
+      jobState, telephone, mountguardTime, 
+      bedemobilizedTime, birthday, Remarks
+      )
+    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{jobnumber,jdbcType=VARCHAR}, #{departmentid,jdbcType=INTEGER}, 
+      #{joblevalid,jdbcType=INTEGER}, #{jobid,jdbcType=INTEGER}, #{sex,jdbcType=CHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{edu,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{jobstate,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, #{mountguardtime,jdbcType=TIMESTAMP}, 
+      #{bedemobilizedtime,jdbcType=TIMESTAMP}, #{birthday,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysUser" >
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="jobnumber != null" >
+        jobNumber,
+      </if>
+      <if test="departmentid != null" >
+        departmentId,
+      </if>
+      <if test="joblevalid != null" >
+        jobLevalId,
+      </if>
+      <if test="jobid != null" >
+        jobId,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="edu != null" >
+        edu,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="jobstate != null" >
+        jobState,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="mountguardtime != null" >
+        mountguardTime,
+      </if>
+      <if test="bedemobilizedtime != null" >
+        bedemobilizedTime,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="jobnumber != null" >
+        #{jobnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null" >
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="joblevalid != null" >
+        #{joblevalid,jdbcType=INTEGER},
+      </if>
+      <if test="jobid != null" >
+        #{jobid,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="edu != null" >
+        #{edu,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="jobstate != null" >
+        #{jobstate,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mountguardtime != null" >
+        #{mountguardtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bedemobilizedtime != null" >
+        #{bedemobilizedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysUser" >
+    update sys_user
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="jobnumber != null" >
+        jobNumber = #{jobnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null" >
+        departmentId = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="joblevalid != null" >
+        jobLevalId = #{joblevalid,jdbcType=INTEGER},
+      </if>
+      <if test="jobid != null" >
+        jobId = #{jobid,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="edu != null" >
+        edu = #{edu,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="jobstate != null" >
+        jobState = #{jobstate,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mountguardtime != null" >
+        mountguardTime = #{mountguardtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bedemobilizedtime != null" >
+        bedemobilizedTime = #{bedemobilizedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.g7neko.CarInsuranceClaims.pojo.SysUser" >
+    update sys_user
+    set name = #{name,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      jobNumber = #{jobnumber,jdbcType=VARCHAR},
+      departmentId = #{departmentid,jdbcType=INTEGER},
+      jobLevalId = #{joblevalid,jdbcType=INTEGER},
+      jobId = #{jobid,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=CHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      edu = #{edu,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      jobState = #{jobstate,jdbcType=INTEGER},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      mountguardTime = #{mountguardtime,jdbcType=TIMESTAMP},
+      bedemobilizedTime = #{bedemobilizedtime,jdbcType=TIMESTAMP},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      Remarks = #{remarks,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
